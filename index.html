@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BusHorários - Público</title>
+    <title>Meu &Ocirc;nibus - P&uacute;blico</title>
     <style>
         :root {
             --verde-escuro: #1A3C34;
@@ -75,32 +75,32 @@
 <body>
 
 <header>
-    <h1 style="margin:0">BusHorários</h1>
-    <p style="margin:5px 0 0; opacity:0.8">Consulte sua linha rapidamente</p>
+    <h1 style="margin:0">Meu &Ocirc;nibus</h1>
+    <p style="margin:5px 0 0; opacity:0.8">Consulte os hor&aacute;rios da linha 124B *</p>
 </header>
 
 <div class="container">
     <div class="controles">
-        <label for="linhaSelect">Selecione a Linha:</label>
+        <label for="linhaSelect">Selecione o itiner&aacute;rio:</label>
         <select id="linhaSelect" onchange="mostrarHorarios()">
-            <option value="">Carregando linhas...</option>
+            <option value="">Carregando...</option>
         </select>
 
-        <label for="diaSelect" style="margin-top:15px">Tipo de Dia:</label>
+        <label for="diaSelect" style="margin-top:15px">Selecione a frequencia:</label>
         <select id="diaSelect" onchange="mostrarHorarios()">
-            <option value="Util">Dias Úteis</option>
-            <option value="Sabado">Sábados</option>
+            <option value="Util">Dias &Uacute;teis</option>
+            <option value="Sabado">S&aacute;bados</option>
             <option value="Domingo">Domingos e Feriados</option>
         </select>
     </div>
 
     <div id="resultado" class="card" style="display:none;">
-        <h2 id="tituloResultado">Horários</h2>
+        <h2 id="tituloResultado">Hor&aacute;rios</h2>
         <div class="time-grid" id="listaHorarios"></div>
     </div>
 </div>
 
-<div class="footer-info">Dados atualizados via arquivo .txt</div>
+<div class="footer-info">* Os hor&aacute;rios podem sofrer atrasos devido a imprevistos no tr&acirc;nsito.</div>
 
 <script>
     let dadosGerais = [];
@@ -124,7 +124,7 @@
             popularSelectLinhas();
         } catch (erro) {
             console.error("Erro ao carregar dados:", erro);
-            alert("Erro ao carregar os horários. Verifique o arquivo dados.txt.");
+            alert("Erro ao carregar os hor&aacute;rios. Verifique o arquivo dados.txt.");
         }
     }
 
@@ -132,7 +132,7 @@
         const select = document.getElementById('linhaSelect');
         const linhasUnicas = [...new Set(dadosGerais.map(d => d.nome))];
         
-        select.innerHTML = '<option value="">Escolha uma linha...</option>';
+        select.innerHTML = '<option value="">Escolha o destino...</option>';
         linhasUnicas.forEach(linha => {
             const option = document.createElement('option');
             option.value = linha;
@@ -167,7 +167,7 @@
             document.getElementById('tituloResultado').textContent = linhaEscolhida;
             resDiv.style.display = 'block';
         } else {
-            listaDiv.innerHTML = '<p>Nenhum horário encontrado para este dia.</p>';
+            listaDiv.innerHTML = '<p>Nenhum hor&aacute;rio encontrado para este dia.</p>';
             resDiv.style.display = 'block';
         }
     }
